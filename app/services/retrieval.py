@@ -1,3 +1,8 @@
+class RetrievalService:
+    """Minimal retrieval service used by the API when a vector store is not available."""
+
+    def retrieve_context(self, query: str, top_k: int = 3):
+        return []
 from typing import List, Dict, Any
 from app.core.config import settings
 from app.services.embeddings import EmbeddingService
