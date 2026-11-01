@@ -3,6 +3,8 @@ class RetrievalService:
 
     def retrieve_context(self, query: str, top_k: int = 3):
         return []
+<<<<<<< HEAD
+=======
 from typing import List, Dict, Any
 from app.core.config import settings
 from app.services.embeddings import EmbeddingService
@@ -27,3 +29,4 @@ class RetrievalService:
         ]
 
         return filtered_filtered_results if 'filtered_filtered_results' in locals() else filtered_results
+>>>>>>> origin/develop

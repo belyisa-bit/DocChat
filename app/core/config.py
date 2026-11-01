@@ -12,6 +12,8 @@ class Settings:
 
 
 settings = Settings()
+<<<<<<< HEAD
+=======
 from pathlib import Path
 from typing import Literal
 from pydantic import Field
@@ -55,3 +57,4 @@ class Settings(BaseSettings):
 
 # Instância global para importação direta no projeto
 settings = Settings()
+>>>>>>> origin/develop

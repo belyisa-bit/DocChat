@@ -3,6 +3,8 @@ import logging
 logger = logging.getLogger("docchat")
 if not logger.handlers:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+<<<<<<< HEAD
+=======
 import sys
 import logging
 from app.core.config import settings
@@ -26,3 +28,4 @@ def setup_logging() -> logging.Logger:
 
 
 logger = setup_logging()
+>>>>>>> origin/develop

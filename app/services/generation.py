@@ -21,8 +21,11 @@ class GenerationService:
     def _build_default_llm(self):
         from app.llm.factory import get_llm_provider
         return get_llm_provider()
+<<<<<<< HEAD
+=======
     def __init__(self, llm_provider: LLMProvider):
         self.llm = llm_provider
+>>>>>>> origin/develop
 
     def generate_answer(self, question: str, context_chunks: List[Dict[str, Any]]) -> QueryResponse:
         if not context_chunks:
@@ -37,18 +40,26 @@ class GenerationService:
         )
 
         user_prompt = f"Contexto:\n{context_text}\n\nPergunta: {question}"
+<<<<<<< HEAD
+        raw_answer = self.llm.generate_response(prompt=user_prompt, system_prompt=self.SYSTEM_PROMPT)
+=======
 
         raw_answer = self.llm.generate_response(
             prompt=user_prompt,
             system_prompt=self.SYSTEM_PROMPT
         )
+>>>>>>> origin/develop
 
         citations = [
             Citation(
                 document_id=c["document_id"],
                 page_number=c.get("page_number"),
+<<<<<<< HEAD
+                snippet=c["content"][:150] + "..." if len(c["content"]) > 150 else c["content"],
+=======
                 page_number=c["page_number"],
                 snippet=c["content"][:150] + "..." if len(c["content"]) > 150 else c["content"]
+>>>>>>> origin/develop
             )
             for c in context_chunks
         ]
@@ -56,6 +67,10 @@ class GenerationService:
         return QueryResponse(
             question=question,
             answer=raw_answer,
+<<<<<<< HEAD
+            citations=citations,
+=======
             citations=citations
         )
+>>>>>>> origin/develop
         )

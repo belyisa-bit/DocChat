@@ -3,6 +3,8 @@ class IngestionService:
 
     def ingest_file(self, file_path):
         return 1
+<<<<<<< HEAD
+=======
 from pathlib import Path
 from app.services.loaders import load_document
 from app.services.chunking import chunk_document_pages
@@ -28,3 +30,4 @@ class IngestionService:
         self.vector_store.add_chunks(chunks, embeddings)
 
         return len(chunks)
+>>>>>>> origin/develop

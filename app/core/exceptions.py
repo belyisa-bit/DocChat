@@ -11,6 +11,8 @@ class LLMProviderError(DocChatException):
 
     def __init__(self, message: str):
         super().__init__(message)
+<<<<<<< HEAD
+=======
     """Exceção base para o projeto DocChat."""
     def __init__(self, message: str):
         self.message = message
@@ -35,3 +37,4 @@ class LLMProviderError(DocChatException):
 class RetrievalError(DocChatException):
     """Lançada em falhas no processo de busca/recuperação de contexto."""
     pass
+>>>>>>> origin/develop

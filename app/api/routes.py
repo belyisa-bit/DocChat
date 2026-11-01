@@ -5,6 +5,10 @@ import tempfile
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, status
 
 from app.core.config import settings
+<<<<<<< HEAD
+from app.core.models import QueryRequest, QueryResponse, DocumentUploadResponse, HealthResponse
+from app.api.deps import get_ingestion_service, get_retrieval_service, get_generation_service
+=======
 from app.core.models import (
     QueryRequest,
     QueryResponse,
@@ -16,6 +20,7 @@ from app.api.deps import (
     get_retrieval_service,
     get_generation_service,
 )
+>>>>>>> origin/develop
 from app.services.ingestion import IngestionService
 from app.services.retrieval import RetrievalService
 from app.services.generation import GenerationService
@@ -73,6 +78,10 @@ async def ask_question(
     generation_service: GenerationService = Depends(get_generation_service),
 ):
     try:
+<<<<<<< HEAD
+        chunks_recuperados = retrieval_service.retrieve_context(query=request.question, top_k=request.top_k)
+        response = generation_service.generate_answer(question=request.question, context_chunks=chunks_recuperados)
+=======
         chunks_recuperados = retrieval_service.retrieve_context(
             query=request.question,
             top_k=request.top_k,
@@ -81,6 +90,7 @@ async def ask_question(
             question=request.question,
             context_chunks=chunks_recuperados,
         )
+>>>>>>> origin/develop
         return response
     except Exception as exc:
         raise HTTPException(
