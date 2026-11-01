@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 
+# Adiciona a raiz do projeto para evitar o erro "No module named 'app.core'"
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 
 from fastapi import FastAPI, Request, status
@@ -17,6 +18,7 @@ def create_app() -> FastAPI:
         title=settings.APP_NAME,
         description="API REST para consulta de documentos via RAG",
         version="1.0.0"
+        version="1.0.0",
     )
 
     @app.exception_handler(DocChatException)
@@ -25,6 +27,7 @@ def create_app() -> FastAPI:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={"error": exc.message}
+            content={"error": exc.message},
         )
 
     app.include_router(router)
@@ -36,4 +39,6 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
+    uvicorn.run("app.api.main:app", host="127.0.0.1", port=8000, reload=True)
+
     uvicorn.run("app.api.main:app", host="127.0.0.1", port=8000, reload=True)
