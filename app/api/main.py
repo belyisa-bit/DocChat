@@ -17,6 +17,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
         description="API REST para consulta de documentos via RAG",
+        version="1.0.0"
         version="1.0.0",
     )
 
@@ -25,6 +26,7 @@ def create_app() -> FastAPI:
         logger.error(f"Erro de domínio capturado: {exc.message}")
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
+            content={"error": exc.message}
             content={"error": exc.message},
         )
 
@@ -32,9 +34,11 @@ def create_app() -> FastAPI:
     return app
 
 
+# IMPORTANTE: A variável 'app' precisa ser instanciada aqui no nível global!
 app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
+    uvicorn.run("app.api.main:app", host="127.0.0.1", port=8000, reload=True)
 
     uvicorn.run("app.api.main:app", host="127.0.0.1", port=8000, reload=True)
