@@ -1,7 +1,10 @@
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
+# Certifica-te de que está __file__ com dois sublinhados antes e depois
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
@@ -10,7 +13,6 @@ from app.core.config import settings
 from app.core.exceptions import DocChatException
 from app.core.logging import logger
 from app.api.routes import router
-
 
 def create_app() -> FastAPI:
     app = FastAPI(
